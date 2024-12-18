@@ -14,6 +14,18 @@ Invoice a InvoiceLine: Predaj a jednotlivé položky faktúr.
 Customer: Zákazníci a ich údaje.
 Employee: Zamestnanci a ich informácie.
 
-1.1 Dátová architektúra
+### 1.1 Dátová architektúra
 ERD diagram
 ERD diagram Chinook databázy (priložený obrázok) znázorňuje prepojenia medzi tabuľkami.![Chinook_ERD](https://github.com/user-attachments/assets/c8d88214-eba3-4383-8336-b15cb279dcc4)
+
+
+## 2. Dimenzionálny model 
+Pre efektívnu analýzu Chinook databázy navrhneme hviezdicový model s centrálnou faktovou tabuľkou fact_sales, ktorá obsahuje predaje jednotlivých skladieb. Táto faktová tabuľka bude prepojená s dimenziami:
+
+dim_customer: Informácie o zákazníkoch (meno, adresa, mesto, štát).
+dim_employee: Zamestnanci, ktorí spracovali predaje.
+dim_track: Informácie o skladbách (názov, album, interpret, žáner, typ média, cena).
+dim_album: Informácie o albumoch a interpretoch.
+dim_date: Dátum predaja (deň, mesiac, rok, štvrťrok).
+dim_genre: Žáner skladieb.
+dim_mediatype: Typ média skladby.
