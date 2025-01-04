@@ -112,6 +112,12 @@ DROP TABLE IF EXISTS Employee_staging;
 ```
 ## 4. Vizualizácia dát
 Dashboard ponúka 4 vizualizácie, ktoré poskytujú prehľad o kľúčových metrikách a trendoch súvisiacich s knihami, používateľmi a hodnoteniami. Pomáhajú pochopiť správanie používateľov a ich preferencie.
+<img width="620" alt="garf1" src="https://github.com/user-attachments/assets/6d5bde7d-a670-4da1-bc9a-ed0f3cb3356d" />
+<img width="634" alt="graf2" src="https://github.com/user-attachments/assets/5a124c39-0af6-467d-abe6-3b0f13067a39" />
+<img width="641" alt="graf3" src="https://github.com/user-attachments/assets/e9fe78e3-b161-44c2-9e0c-805df845702e" />
+<img width="662" alt="graf4" src="https://github.com/user-attachments/assets/d312132a-2b4f-48db-b551-33c64c6c48f0" />
+<img width="623" alt="graf5" src="https://github.com/user-attachments/assets/5f5588cb-2cdb-4b4b-a91b-43d607320fcc" />
+<img width="648" alt="graf6" src="https://github.com/user-attachments/assets/3345197c-9481-4ba7-bdf8-aed90f8c5752" />
 
 
 ## GRAF 1: Najlepšie zarábajúce skladby (Top 10 skladieb podľa tržieb)
@@ -179,7 +185,7 @@ GROUP BY t.`Name`
 ORDER BY total_sold DESC
 LIMIT 10;
 ```
-## GRAF 13: Počet skladieb podľa albumov (Top 5 albumov s najväčším počtom skladieb)
+## GRAF 6: Počet skladieb podľa albumov (Top 5 albumov s najväčším počtom skladieb)
 Táto vizualizácia zobrazuje 5 albumov s najväčším počtom skladieb. Pomáha identifikovať albumy, ktoré ponúkajú najviac obsahu.
 ```sql
 SELECT 
