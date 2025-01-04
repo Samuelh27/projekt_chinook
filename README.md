@@ -119,11 +119,11 @@ Táto vizualizácia zobrazuje 10 skladieb, ktoré vygenerovali najvyššie tržb
 
 ```sql
 SELECT 
-    t.Name AS track_name,
-    SUM(il.UnitPrice * il.Quantity) AS total_revenue
-FROM InvoiceLine il
-JOIN Track t ON il.TrackId = t.TrackId
-GROUP BY t.Name
+    t.`Name` AS track_name,
+    SUM(il.`UnitPrice` * il.`Quantity`) AS total_revenue
+FROM `INVOICELINE` il
+JOIN `Track` t ON il.`TrackId` = t.`TrackId`
+GROUP BY t.`Name`
 ORDER BY total_revenue DESC
 LIMIT 10;
 ```
@@ -132,11 +132,11 @@ Táto vizualizácia ukazuje priemernú cenu skladieb v jednotlivých žánroch. 
 
 ```sql
 SELECT 
-    g.Name AS genre,
-    AVG(t.UnitPrice) AS average_price
-FROM Track t
-JOIN Genre g ON t.GenreId = g.GenreId
-GROUP BY g.Name
+    g.`Name` AS genre,
+    AVG(t.`UnitPrice`) AS average_price
+FROM `Track` t
+JOIN `Genre` g ON t.`GenreId` = g.`GenreId`
+GROUP BY g.`Name`
 ORDER BY average_price DESC;
 ```
 ## GRAF 3: Najčastejšie prehrávané playlisty (Top 5 playlistov podľa počtu skladieb)
@@ -144,11 +144,11 @@ Táto vizualizácia zobrazuje 5 playlistov s najväčším počtom skladieb. Umo
 
 ```sql
 SELECT 
-    p.Name AS playlist_name,
-    COUNT(pt.TrackId) AS track_count
-FROM Playlist p
-JOIN PlaylistTrack pt ON p.PlaylistId = pt.PlaylistId
-GROUP BY p.Name
+    p.`Name` AS playlist_name,
+    COUNT(pt.`TrackId`) AS track_count
+FROM `PLAYLIST` p
+JOIN `PlaylistTrack` pt ON p.`PlaylistId` = pt.`PlaylistId`
+GROUP BY p.`Name`
 ORDER BY track_count DESC
 LIMIT 5;
 ```
@@ -157,12 +157,12 @@ Táto vizualizácia zobrazuje najpredávanejší album podľa počtu predaných 
 
 ```sql
 SELECT 
-    al.Title AS album_title,
-    COUNT(il.TrackId) AS total_sold
-FROM InvoiceLine il
-JOIN Track t ON il.TrackId = t.TrackId
-JOIN Album al ON t.AlbumId = al.AlbumId
-GROUP BY al.Title
+    al.`Title` AS album_title,
+    COUNT(il.`TrackId`) AS total_sold
+FROM `INVOICELINE` il
+JOIN `Track` t ON il.`TrackId` = t.`TrackId`
+JOIN `Album` al ON t.`AlbumId` = al.`AlbumId`
+GROUP BY al.`Title`
 ORDER BY total_sold DESC
 LIMIT 1;
 ```
@@ -171,11 +171,24 @@ Táto vizualizácia zobrazuje 10 skladieb s najväčším počtom predaných kus
 
 ```sql
 SELECT 
-    t.Name AS track_name,
-    SUM(il.Quantity) AS total_sold
-FROM InvoiceLine il
-JOIN Track t ON il.TrackId = t.TrackId
-GROUP BY t.Name
+    t.`Name` AS track_name,
+    SUM(il.`Quantity`) AS total_sold
+FROM `INVOICELINE` il
+JOIN `Track` t ON il.`TrackId` = t.`TrackId`
+GROUP BY t.`Name`
 ORDER BY total_sold DESC
 LIMIT 10;
 ```
+## GRAF 13: Počet skladieb podľa albumov (Top 5 albumov s najväčším počtom skladieb)
+Táto vizualizácia zobrazuje 5 albumov s najväčším počtom skladieb. Pomáha identifikovať albumy, ktoré ponúkajú najviac obsahu.
+```sql
+SELECT 
+    al.`Title` AS album_title,
+    COUNT(t.`TrackId`) AS track_count
+FROM `Album` al
+JOIN `Track` t ON al.`AlbumId` = t.`AlbumId`
+GROUP BY al.`Title`
+ORDER BY track_count DESC
+LIMIT 5;
+```
+
