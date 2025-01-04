@@ -94,3 +94,21 @@ JOIN invoice i ON il.InvoiceId = i.InvoiceId
 JOIN customer c ON i.CustomerId = c.CustomerId
 JOIN employee e ON c.SupportRepId = e.EmployeeId;
 ```
+
+### 3.3 Načítanie dát
+Po vytvorení finálnych dimenzií a faktovej tabuľky nahráme dáta do Snowflake. Staging tabuľky môžu byť odstránené pre optimalizáciu úložiska:
+```sql
+DROP TABLE IF EXISTS PlaylistTrack_staging;
+DROP TABLE IF EXISTS InvoiceLine_staging;
+DROP TABLE IF EXISTS Playlist_staging;
+DROP TABLE IF EXISTS Track_staging;
+DROP TABLE IF EXISTS Invoice_staging;
+DROP TABLE IF EXISTS Customer_staging;
+DROP TABLE IF EXISTS Album_staging;
+DROP TABLE IF EXISTS Genre_staging;
+DROP TABLE IF EXISTS MediaType_staging;
+DROP TABLE IF EXISTS Artist_staging;
+DROP TABLE IF EXISTS Employee_staging;
+```
+## 4. Vizualizácia dát
+Dashboard ponúka 4 vizualizácie, ktoré poskytujú prehľad o kľúčových metrikách a trendoch súvisiacich s knihami, používateľmi a hodnoteniami. Pomáhajú pochopiť správanie používateľov a ich preferencie.
