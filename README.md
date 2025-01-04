@@ -112,3 +112,70 @@ DROP TABLE IF EXISTS Employee_staging;
 ```
 ## 4. Vizualizácia dát
 Dashboard ponúka 4 vizualizácie, ktoré poskytujú prehľad o kľúčových metrikách a trendoch súvisiacich s knihami, používateľmi a hodnoteniami. Pomáhajú pochopiť správanie používateľov a ich preferencie.
+
+
+## GRAF 1: Najlepšie zarábajúce skladby (Top 10 skladieb podľa tržieb)
+Táto vizualizácia zobrazuje 10 skladieb, ktoré vygenerovali najvyššie tržby. Pomáha identifikovať skladby s najväčším komerčným úspechom.
+
+```sql
+SELECT 
+    t.Name AS track_name,
+    SUM(il.UnitPrice * il.Quantity) AS total_revenue
+FROM InvoiceLine il
+JOIN Track t ON il.TrackId = t.TrackId
+GROUP BY t.Name
+ORDER BY total_revenue DESC
+LIMIT 10;
+```
+## GRAF 2: Priemerná cena skladieb podľa žánrov
+Táto vizualizácia ukazuje priemernú cenu skladieb v jednotlivých žánroch. Pomáha pochopiť, ako sú žánre oceňované.
+
+```sql
+SELECT 
+    g.Name AS genre,
+    AVG(t.UnitPrice) AS average_price
+FROM Track t
+JOIN Genre g ON t.GenreId = g.GenreId
+GROUP BY g.Name
+ORDER BY average_price DESC;
+```
+## GRAF 3: Najčastejšie prehrávané playlisty (Top 5 playlistov podľa počtu skladieb)
+Táto vizualizácia zobrazuje 5 playlistov s najväčším počtom skladieb. Umožňuje identifikovať najobľúbenejšie tematické zbierky skladieb.
+
+```sql
+SELECT 
+    p.Name AS playlist_name,
+    COUNT(pt.TrackId) AS track_count
+FROM Playlist p
+JOIN PlaylistTrack pt ON p.PlaylistId = pt.PlaylistId
+GROUP BY p.Name
+ORDER BY track_count DESC
+LIMIT 5;
+```
+## GRAF 4: Najpredávanejší album (Top album podľa počtu predaných skladieb)
+Táto vizualizácia zobrazuje najpredávanejší album podľa počtu predaných skladieb. Umožňuje identifikovať albumy s najvyšším úspechom u zákazníkov.
+
+```sql
+SELECT 
+    al.Title AS album_title,
+    COUNT(il.TrackId) AS total_sold
+FROM InvoiceLine il
+JOIN Track t ON il.TrackId = t.TrackId
+JOIN Album al ON t.AlbumId = al.AlbumId
+GROUP BY al.Title
+ORDER BY total_sold DESC
+LIMIT 1;
+```
+## GRAF 5: Najpredávanejšie skladby (Top 10 skladieb podľa počtu predaných kusov)
+Táto vizualizácia zobrazuje 10 skladieb s najväčším počtom predaných kusov. Umožňuje identifikovať najpopulárnejšie skladby medzi zákazníkmi.
+
+```sql
+SELECT 
+    t.Name AS track_name,
+    SUM(il.Quantity) AS total_sold
+FROM InvoiceLine il
+JOIN Track t ON il.TrackId = t.TrackId
+GROUP BY t.Name
+ORDER BY total_sold DESC
+LIMIT 10;
+```
