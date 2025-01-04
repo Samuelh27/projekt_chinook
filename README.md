@@ -38,22 +38,23 @@ dim_mediatype: Typ média skladby.
 Dáta z Chinook databázy budú extrahované v .sql alebo .csv formáte a nahraté do Snowflake do staging tabuliek.
 
 Príklad vytvorenia stage a načítania dát:
-
+```sql
 CREATE OR REPLACE STAGE chinook_stage; 
 COPY INTO artist_staging  
 FROM @chinook_stage/Artist.csv 
-FILE_FORMAT = (TYPE = 'CSV' SKIP_HEADER = 1); 
+FILE_FORMAT = (TYPE = 'CSV' SKIP_HEADER = 1);
+```
 
 ### 3.2 Transformácia dát
 Transformácia dát bude zahŕňať čistenie a prípravu dimenzií a faktovej tabuľky.
 
 Vytvorenie dimenzie zákazníkov (dim_customer):
 
-sql
-Kopírovať kód
+```sql
 CREATE TABLE dim_customer AS
 SELECT 
     CustomerId AS dim_customer_id,
     FirstName || ' ' || LastName AS full_name,
     City, State, Country, Email
 FROM customer;
+```
