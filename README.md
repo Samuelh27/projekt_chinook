@@ -23,11 +23,17 @@ ERD diagram Chinook databázy (priložený obrázok) znázorňuje prepojenia med
 Pre efektívnu analýzu Chinook databázy navrhneme hviezdicový model s centrálnou faktovou tabuľkou fact_sales, ktorá obsahuje predaje jednotlivých skladieb. Táto faktová tabuľka bude prepojená s dimenziami:
 
 dim_customer: Informácie o zákazníkoch (meno, adresa, mesto, štát).
+
 dim_employee: Zamestnanci, ktorí spracovali predaje.
+
 dim_track: Informácie o skladbách (názov, album, interpret, žáner, typ média, cena).
+
 dim_album: Informácie o albumoch a interpretoch.
+
 dim_date: Dátum predaja (deň, mesiac, rok, štvrťrok).
+
 dim_genre: Žáner skladieb.
+
 dim_mediatype: Typ média skladby.
 <img width="695" alt="Snímka obrazovky 2025-01-04 133649" src="https://github.com/user-attachments/assets/27f1c40b-b860-474e-b213-cf07129111de" />
 
