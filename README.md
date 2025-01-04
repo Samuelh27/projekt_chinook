@@ -29,3 +29,5 @@ dim_album: Informácie o albumoch a interpretoch.
 dim_date: Dátum predaja (deň, mesiac, rok, štvrťrok).
 dim_genre: Žáner skladieb.
 dim_mediatype: Typ média skladby.
+<img width="695" alt="Snímka obrazovky 2025-01-04 133649" src="https://github.com/user-attachments/assets/27f1c40b-b860-474e-b213-cf07129111de" />
+
