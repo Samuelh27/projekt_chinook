@@ -1,6 +1,6 @@
 SELECT 
-    t.`Name` AS track_name,
-    SUM(il.`Quantity`) AS total_sold
+  t.`Name` AS track_name,
+  SUM(il.`Quantity`) AS total_sold
 FROM `INVOICELINE` il
 JOIN `Track` t ON il.`TrackId` = t.`TrackId`
 GROUP BY t.`Name`
