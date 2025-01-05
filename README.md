@@ -5,15 +5,15 @@ Cieľom projektu je analyzovať Chinook databázu, ktorá obsahuje údaje o pred
 
 Chinook databáza obsahuje tieto hlavné tabuľky:
 
--**Artist:** Informácie o interpretoch.
--**Album:** Albumy interpretov.
--**Track:** Skladby albumov.
--**Genre:** Hudobné žánre skladieb.
--**MediaType:** Typ média skladieb (napr. MP3, AAC).
--**Invoice a InvoiceLine:** Predaj a jednotlivé položky faktúr.
--**Customer:** Zákazníci a ich údaje.
--**Employee:** Zamestnanci a ich informácie.
--**Playlist.**
+- **Artist:** Informácie o interpretoch.
+- **Album:** Albumy interpretov.
+- **Track:** Skladby albumov.
+- **Genre:** Hudobné žánre skladieb.
+- **MediaType:** Typ média skladieb (napr. MP3, AAC).
+- **Invoice a InvoiceLine:** Predaj a jednotlivé položky faktúr.
+- **Customer:** Zákazníci a ich údaje.
+- **Employee:** Zamestnanci a ich informácie.
+- **Playlist.**
 
 ### 1.1 Dátová architektúra
 ERD diagram
