@@ -33,3 +33,18 @@ JOIN `album` a ON t.`AlbumId` = a.`AlbumId`
 JOIN `artist` ar ON a.`ArtistId` = ar.`ArtistId`
 JOIN `genre` g ON t.`GenreId` = g.`GenreId`
 JOIN `mediatype` mt ON t.`MediaTypeId` = mt.`MediaTypeId`;
+
+
+CREATE TABLE fact_sales AS
+SELECT 
+    il.`InvoiceLineId` AS fact_id,
+    i.`InvoiceDate` AS sale_date,
+    c.`CustomerId` AS customer_id,
+    e.`EmployeeId` AS employee_id,
+    il.`TrackId` AS track_id,
+    il.`Quantity` AS quantity_sold,
+    il.`UnitPrice` * il.`Quantity` AS total_amount
+FROM `invoiceline` il
+JOIN `invoice` i ON il.`InvoiceId` = i.`InvoiceId`
+JOIN `customer` c ON i.`CustomerId` = c.`CustomerId`
+JOIN `employee` e ON c.`SupportRepId` = e.`EmployeeId`;
