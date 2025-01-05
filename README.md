@@ -47,13 +47,13 @@ Vloženie dát do Snowflake:
 Na import údajov do Snowflake boli použité SQL príkazy na vytvorenie štruktúry tabuľky a následné vloženie dát. Napríklad pre tabuľku album bol postup nasledovný:
 
 ```sql
-CREATE OR REPLACE TABLE chinook.album (
-    AlbumId INT,
-    Title VARCHAR,
-    ArtistId INT
+CREATE OR REPLACE TABLE `album` (
+    `AlbumId` INT,
+    `Title` VARCHAR,
+    `ArtistId` INT
 );
 
-INSERT INTO chinook.album (AlbumId, Title, ArtistId)
+INSERT INTO `album` (`AlbumId`, `Title`, `ArtistId`)
 VALUES 
     (1, 'For Those About To Rock We Salute You', 1),
     (2, 'Balls to the Wall', 2),
