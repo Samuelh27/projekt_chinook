@@ -35,15 +35,33 @@ dim_mediatype: Typ média skladby.
 
 ## 3. ETL proces v Snowflake
 ### 3.1 Extrakcia dát
-Dáta z Chinook databázy budú extrahované v .sql alebo .csv formáte a nahraté do Snowflake do staging tabuliek.
+Dáta pre projekt boli získané z databázy Chinook, pričom proces extrakcie prebiehal nasledovne:
 
-Príklad vytvorenia stage a načítania dát:
+Načítanie SQL súboru:
+SQL skript obsahoval štruktúru databázy Chinook a ukážkové údaje. Súbor bol otvorený v SQL editore alebo textovom nástroji.
+
+Výber dátových častí:
+Zo skriptu boli identifikované a manuálne vybrané sekcie s údajmi, konkrétne príkazy INSERT INTO, ktoré obsahovali záznamy pre tabuľky.
+
+Vloženie dát do Snowflake:
+Na import údajov do Snowflake boli použité SQL príkazy na vytvorenie štruktúry tabuľky a následné vloženie dát. Napríklad pre tabuľku album bol postup nasledovný:
+
 ```sql
-CREATE OR REPLACE STAGE chinook_stage; 
-COPY INTO artist_staging  
-FROM @chinook_stage/Artist.csv 
-FILE_FORMAT = (TYPE = 'CSV' SKIP_HEADER = 1);
+CREATE OR REPLACE TABLE chinook.album (
+    AlbumId INT,
+    Title VARCHAR,
+    ArtistId INT
+);
+
+INSERT INTO chinook.album (AlbumId, Title, ArtistId)
+VALUES 
+    (1, 'For Those About To Rock We Salute You', 1),
+    (2, 'Balls to the Wall', 2),
+    (3, 'Restless and Wild', 2),
+    ...
 ```
+Opakovanie pre ostatné tabuľky:
+Rovnaký postup bol aplikovaný na ostatné tabuľky v SQL súbore, aby boli všetky potrebné dáta úspešne prenesené do Snowflake.
 
 ### 3.2 Transformácia dát
 Transformácia dát bude zahŕňať čistenie a prípravu dimenzií a faktovej tabuľky.
