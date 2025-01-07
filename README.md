@@ -31,7 +31,8 @@ Pre efektívnu analýzu Chinook databázy navrhneme hviezdicový model s centrá
 - **dim_genre:** Žáner skladieb.
 - **dim_mediatype:** Typ média skladby.
 
-<img width="695" alt="Snímka obrazovky 2025-01-04 133649" src="https://github.com/user-attachments/assets/27f1c40b-b860-474e-b213-cf07129111de" />
+<img width="698" alt="dim" src="https://github.com/user-attachments/assets/e0156658-808d-4d3a-8b2f-811faa329123" />
+
 
 ## 3. ETL proces v Snowflake
 ### 3.1 Extrakcia dát
